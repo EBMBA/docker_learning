@@ -105,4 +105,28 @@ Container :
 -   To quit container without remove it : `Ctrl + P +Q`
 -   Display logs : `docker logs -ft <CONTAINER NAME>`  with `-f` to follow in live logs and `-t` to display hours and minutes 
 
+Volume :
+-   Create  : `docker volume create <VOLUME NAME>`
+-   List    : `docker volume ls`
+-   Collect information on : `docker volume inspect <VOLUME NAME>`
+-   Delete  : `docker volume rm <VOLUME NAME>` 
 
+
+## 5. Docker Compose 
+
+Docker compose :
+-  Help to define and share multi-container applications. 
+-  Create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
+
+Advantages : 
+- Define your application stack in a file 
+- Easily enable someone else to contribute to a project
+
+Instalation :
+```bash 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+```

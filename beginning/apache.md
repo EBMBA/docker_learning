@@ -1,9 +1,9 @@
 ```docker
 docker pull httpd:latest
 
-docker run --name webServer -p 8081:80 httpd:latest
+docker run -ti --name webServer -p 8080:80 httpd:latest
 "or to run it in the background" 
-docker run --name webServer -d -p 8081:80 httpd:latest
+docker run -ti --name webServer -d -p 8080:80 httpd:latest
 
 docker exec -ti webServer /bin/bash 
 
