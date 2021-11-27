@@ -4,7 +4,7 @@ FROM debian:stable-slim
 
 
 # MÉTADONNÉES DE L'IMAGE
-LABEL version="1.0" maintainer="AJDAINI Hatim <ajdaini.hatim@gmail.com>"
+LABEL version="1.0" maintainer="METRAL Emile"
 
 
 # VARIABLES TEMPORAIRES
