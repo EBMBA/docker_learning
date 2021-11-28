@@ -4,3 +4,4 @@
 |---------  |---------  |
 |beginning  | lessons   |
 | images    | training  |
+| compose   | training  |

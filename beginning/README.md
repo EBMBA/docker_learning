@@ -130,3 +130,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
 ```
+
+## 6. Docker Compose Commands
+
+Run Docker compose : `docker-compose up -d` with `-d` to run it in the background
+
+
+List container in Docker Compose :`docker-compose ls`
+
