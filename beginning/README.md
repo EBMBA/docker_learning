@@ -158,30 +158,31 @@ List the images used in the docker-compose.yml : `docker-compose images`
 
 The Docker network system uses drivers. Several drivers exist and provide different functionality. 
 
-1. Bridge
+### 1. Bridge
 
 Containers that use this driver can only communicate with each other, however they are not accessible from the outside. 
 
 
 ![Bridge](img/bridge_network_docker.jpg)
-2. None
+
+### 2. None
 
 Container will have no network interface (except the loopback interface).
 
 
-3. Host
+### 3. Host
 
 This type of network allows containers to use the same interface as the host. It removes the network isolation between the containers and will by default be accessible from the outside.
 
 ![Host](img/host_network_docker.png)
 
-4. Overlay
+### 4. Overlay
 
 It creates a distributed network between several hosts with the Docker engine. Docker seamlessly manages the routing of each package to and from the right host and container. 
 
 ![Overlay](img/overlay_network_docker.png)
 
-5. MacVLAN
+### 5. MacVLAN
 
 The Macvlan driver allows to assign a MAC address to a container, making it appear as a physical device on your network. The Docker engine routes traffic to the containers based on their MAC addresses.
 
