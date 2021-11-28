@@ -153,3 +153,56 @@ Stop containers and remove containers, networks, volumes, and images : `docker-c
 Remove Stopped Containers from Docker Compose : `docker-compose rm` with `-f` to force
 
 List the images used in the docker-compose.yml : `docker-compose images`
+
+## 7. Network
+
+The Docker network system uses drivers. Several drivers exist and provide different functionality. 
+
+1. Bridge
+
+Containers that use this driver can only communicate with each other, however they are not accessible from the outside. 
+
+
+![Bridge](img/bridge_network_docker.jpg)
+2. None
+
+Container will have no network interface (except the loopback interface).
+
+
+3. Host
+
+This type of network allows containers to use the same interface as the host. It removes the network isolation between the containers and will by default be accessible from the outside.
+
+![Host](img/host_network_docker.png)
+
+4. Overlay
+
+It creates a distributed network between several hosts with the Docker engine. Docker seamlessly manages the routing of each package to and from the right host and container. 
+
+![Overlay](img/overlay_network_docker.png)
+
+5. MacVLAN
+
+The Macvlan driver allows to assign a MAC address to a container, making it appear as a physical device on your network. The Docker engine routes traffic to the containers based on their MAC addresses.
+
+![MacVLAN](img/macvlan_network_docker.jpg)
+
+## 8. Network Commands 
+
+Create network : `docker network create --driver <DRIVER TYPE> <NETWORK NAME>` or with subnets and gateway `--subnet=172.16.86.0/24 --gateway=172.16.86.1`
+
+List docker networks : `docker network ls`
+
+Collect information on the docker network : `docker network inspect <NETWORK NAME>`
+
+Connect container to a network : `docker run -dit --name <CONTAINER NAME> --network <NETWORK NAME> <IMAGE NAME>`
+
+Example ping command : `docker exec alpine1 ping -c 1 172.21.0.3`
+
+Disconnect container of a network : ` docker network disconnect NETWORK NAME> <CONTAINER NAME>` 
+
+Remove Docker network : `docker network rm <NETWORK NAME>`
+
+Remove all unused docker networks : `docker network prune` can be used with -f ou --force
+
+Start a container and connect it to a docker network : `docker run --network <NETWORK NAME> <IMAGE NAME>`
