@@ -138,3 +138,18 @@ Run Docker compose : `docker-compose up -d` with `-d` to run it in the backgroun
 
 List container in Docker Compose :`docker-compose ls`
 
+Check the service logs of your Docker Compose : `docker-compose logs`
+
+Check containers ip address : `docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)`
+
+Kill containers of the Docker Compose file : `docker-compose kill`
+
+Stop containers in Docker Compose : `docker-compose stop`
+
+Start containers in Docker Compose : `docker-compose start`
+
+Stop containers and remove containers, networks, volumes, and images : `docker-compose down` with `-t` to specify a timeout before the actions in seconds
+
+Remove Stopped Containers from Docker Compose : `docker-compose rm` with `-f` to force
+
+List the images used in the docker-compose.yml : `docker-compose images`

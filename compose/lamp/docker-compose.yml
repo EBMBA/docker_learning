@@ -7,7 +7,7 @@ services:
     restart: always
     volumes:
       - db-volume:/var/lib/mysql
-      - ./article.sql:/docker-entrypoint-initdb.d
+      - ./articles.sql:/docker-entrypoint-initdb.d/articles.sql
     environment:
       MYSQL_ROOT_PASSWORD: test
       MYSQL_DATABASE: test
