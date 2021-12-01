@@ -207,3 +207,48 @@ Remove Docker network : `docker network rm <NETWORK NAME>`
 Remove all unused docker networks : `docker network prune` can be used with -f ou --force
 
 Start a container and connect it to a docker network : `docker run --network <NETWORK NAME> <IMAGE NAME>`
+
+## 9. Registry
+
+### 1. Introduction 
+
+The Docker Registry is an open-source Docker image storage and distribution system (under the Apache license), deployed on the server side. It allows users to extract and insert Docker images into a repository with appropriate access permissions.
+
+When use Registry :
+- Tightly control where your images are stored
+- Have full control over your image distribution pipeline
+- Closely integrate image storage and distribution into your internal development workflow
+
+### 2. Commands
+
+To create a Docker registry : ` docker run -d -p 5000:5000 --restart=always --name <Registry Name> registry:2`
+
+Create tag on an image : `docker tag alpinegit <SERVER NAME REGISTRY>:<PORT SERVER REGISTRY>/<CONTAINER NAME>`
+
+Display images in Docker Registry : `curl -X GET http://localhost:5000/v2/_catalog`
+
+Run container of Docker Registry with volume : 
+Example :
+```Docker
+docker run -d \
+    -p 5000:5000 \
+    --restart=always \
+    --name registry \
+    -v "$(pwd)"/data:/var/lib/registry \
+    registry:2
+```
+
+Run container Docker Registry (HTTPS) :
+Example :
+```Docker
+docker run -d \           
+    --restart=always \   
+    --name registry \
+    -v "$(pwd)"/data:/var/lib/registry \
+    -v "$(pwd)"/certs:/certs \         
+    -e REGISTRY_HTTP_ADDR=0.0.0.0:443 \
+    -e REGISTRY_HTTP_TLS_CERTIFICATE=/pathTo/certificat.crt \
+    -e REGISTRY_HTTP_TLS_KEY=/pathTo/key.key \
+    -p 443:443 \
+    registry:2
+```
