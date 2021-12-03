@@ -1,5 +1,7 @@
 # Beginning 
 
+Thanks to : devopssec.fr
+
 ## 1. Installation 
 
 ```bash
@@ -251,4 +253,57 @@ docker run -d \
     -e REGISTRY_HTTP_TLS_KEY=/pathTo/key.key \
     -p 443:443 \
     registry:2
+```
+
+## 10. Docker Machine 
+
+Docker host provisioning and management tool
+
+
+To install Docker Machine on Linux :
+```Bash 
+base=https://github.com/docker/machine/releases/download/v0.16.0 && curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+
+```
+
+For auto-completion :
+```bash
+sudo nano /etc/bash_completion.d/docker-machine-prompt.bash
+
+  base=https://raw.githubusercontent.com/docker/machine/v0.16.0
+  for i in docker-machine-prompt.bash docker-machine-wrapper.bash docker-machine.bash
+  do
+      sudo wget "$base/contrib/completion/bash/${i}" -P /etc/bash_completion.d
+  done
+
+
+source /etc/bash_completion.d/docker-machine-prompt.bash
+```
+
+To install VMware drivers :
+```bash
+wget -P ~/Downloads https://github.com/machine-drivers/docker-machine-driver-vmware/releases/download/v0.1.5/docker-machine-driver-vmware_0.1.5_linux_amd64.tar.gz 
+
+sudo tar -xvf ~/Downloads/docker-machine-driver-vmware_0.1.5_linux_amd64.tar.gz -C /usr/bin/
+
+sudo chmod +x /usr/bin/docker-machine-driver-vmware
+```
+
+To create VM on VMware: `docker-machine create --driver vmware <VM NAME>`
+
+Display all Docker machines : `docker-machine ls`
+
+Retrieve the environment variables of the new VM to be exported : `docker-machine env <VM NAME>`
+
+Run VM : `eval $(docker-machine env <VM NAME>)`
+
+Display active docker machine : `docker-machine active` 
+
+All Docker next commands will be done on through the active Docker machine. 
+
+Others commands :
+```Docker
+docker-machine stop 
+docker-machine start 
 ```

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    api1:
+      image: hajdaini/flask:api1
+      deploy:
+        replicas: 3
+        resources:
+          limits:
+            memory: 50M
+        restart_policy:
+          condition: on-failure
+      ports:
+        - "5000:5000"
+    
+    api2:
+      image: hajdaini/flask:api2
+      deploy:
+        replicas: 3
+        resources:
+          limits:
+            memory: 50M
+        restart_policy:
+          condition: on-failure
+      ports:
+        - "5001:5000"
